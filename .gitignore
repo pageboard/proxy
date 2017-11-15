@@ -59,3 +59,7 @@ typings/
 
 # luarocks installed modules
 rocks
+
+# links
+nginx/snippets/upcache-*.conf
+nginx/conf.d/upcache-*.conf

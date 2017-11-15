@@ -1,0 +1,24 @@
+#!/bin/sh
+set -e
+
+if [ "inet" != "$ADDRFAM" ]; then exit 0; fi
+if [ "eth0" != "$IFACE" ]; then exit 0; fi
+
+iptables -t nat -p tcp -A PREROUTING --destination pageboard.io --dport 80 -j DNAT --to-destination :17080
+iptables -t nat -p tcp -A PREROUTING --destination pageboard.io --dport 443 -j DNAT --to-destination :17443
+# ensure local requests are properly routed
+iptables -t nat -p tcp -A OUTPUT --destination pageboard.io --dport 80 -j DNAT --to-destination :17080
+iptables -t nat -p tcp -A OUTPUT --destination pageboard.io --dport 443 -j DNAT --to-destination :17443
+
+iptables -A INPUT -p tcp --dport 17080 -j ACCEPT
+iptables -A INPUT -p tcp --dport 17443 -j ACCEPT
+
+iptables -t nat -p tcp -A PREROUTING --destination pageboard.fr --dport 80 -j DNAT --to-destination :11080
+iptables -t nat -p tcp -A PREROUTING --destination pageboard.fr --dport 443 -j DNAT --to-destination :11443
+# ensure local requests are properly routed
+iptables -t nat -p tcp -A OUTPUT --destination pageboard.fr --dport 80 -j DNAT --to-destination :11080
+iptables -t nat -p tcp -A OUTPUT --destination pageboard.fr --dport 443 -j DNAT --to-destination :11443
+
+iptables -A INPUT -p tcp --dport 11080 -j ACCEPT
+iptables -A INPUT -p tcp --dport 11443 -j ACCEPT
+
