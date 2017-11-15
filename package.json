@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "luarocks --tree=rocks install lua-resty-auto-ssl && luarocks --tree=rocks install upcache",
-    "postinstall": "postinstall-links && ln -sf /etc/nginx/mime.types ."
+    "postinstall": "ln -sf /etc/nginx/mime.types ."
   },
   "repository": {
     "type": "git",
@@ -24,12 +24,6 @@
   },
   "homepage": "https://github.com/pageboard/server#readme",
   "dependencies": {
-    "postinstall-links": "^0.3.1",
     "upcache": "^0.6.5"
-  },
-  "links": {
-    "upcache/nginx/conf.d/upcache-http.conf": "nginx/conf.d/",
-    "upcache/nginx/snippets/upcache-location.conf": "nginx/snippets/",
-    "upcache/nginx/snippets/upcache-server.conf": "nginx/snippets/"
   }
 }
