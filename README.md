@@ -1,0 +1,2 @@
+# server
+Nginx server configuration
