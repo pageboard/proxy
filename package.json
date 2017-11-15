@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "luarocks --tree=rocks install lua-resty-auto-ssl && luarocks --tree=rocks install upcache",
+    "install": "luarocks --tree=rocks install lua-resty-auto-ssl; luarocks --tree=rocks install upcache; curl -L https://github.com/openresty/lua-resty-lock/archive/v0.07.tar.gz | tar -C ./rocks/share/lua/5.1/ -x -v -z -f - --wildcards '*/lib/resty/*' --strip-components 2",
     "postinstall": "ln -sf /etc/nginx/mime.types ."
   },
   "repository": {
