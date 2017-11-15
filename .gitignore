@@ -63,3 +63,4 @@ rocks
 # links
 nginx/snippets/upcache-*.conf
 nginx/conf.d/upcache-*.conf
+mime.types
