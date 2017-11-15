@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# luarocks installed modules
+rocks
