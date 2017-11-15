@@ -2,8 +2,7 @@
 all: dhparam fallback
 
 dhparam:
-	echo "this is going to take a minute..."
-	openssl dhparam 2048 -outform pem -out ${PWD}/ssl/dhparam.pem > /dev/null 2>&1
+	openssl dhparam 2048 -outform pem > ${PWD}/ssl/dhparam.pem
 	chmod 640 ${PWD}/ssl/dhparam.pem
 
 fallback:
