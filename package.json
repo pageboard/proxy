@@ -1,0 +1,28 @@
+{
+  "name": "@pageboard/server",
+  "version": "0.1.0",
+  "description": "nginx server configuration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "luarocks --tree=rocks install lua-resty-auto-ssl && luarocks --tree=rocks install upcache"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pageboard/server.git"
+  },
+  "keywords": [
+    "pageboard",
+    "server",
+    "nginx"
+  ],
+  "author": "Jérémy Lal <kapouer@melix.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pageboard/server/issues"
+  },
+  "homepage": "https://github.com/pageboard/server#readme",
+  "dependencies": {
+    "upcache": "^0.6.4"
+  }
+}
