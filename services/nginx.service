@@ -17,7 +17,7 @@ After=network.target
 
 [Service]
 Type=forking
-WorkingDirectory=/home/dev/pageboard/server
+WorkingDirectory=%h/pageboard/server
 PIDFile=nginx.pid
 ExecStartPre=/usr/sbin/nginx -t -q -p nginx -c nginx.conf -g 'daemon on; master_process on;'
 ExecStart=/usr/sbin/nginx -p nginx -c nginx.conf -g 'daemon on; master_process on;'
