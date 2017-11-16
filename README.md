@@ -9,6 +9,7 @@ Prerequisites
 
 * /usr/sbin/nginx
 * /etc/nginx/mime.types
+* lua5.1 and lua-filesystem packages
 * nginx modules: ndk, lua, memc, set_misc, srcache_filter all installed
   in usual location (/usr/share/nginx/modules)
 * /usr/bin/memcached
