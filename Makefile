@@ -16,3 +16,8 @@ luarocks:
 
 nginx/mime.types:
 	cd nginx && ln -sf /etc/nginx/mime.types .
+
+leclean:
+	rm -rf autossl/storage
+	rm -rf autossl/letsencrypt/certs
+	rm -rf autossl/letsencrypt/accounts
