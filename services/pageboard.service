@@ -1,0 +1,16 @@
+[Unit]
+Description=%p %i
+After=postgresql.service
+
+[Service]
+WorkingDirectory=/home/dev/pageboard
+ExecStart=node_modules/.bin/pageboard
+Restart=always
+Environment=APPNAME=pageboard1
+Environment=NODE_ENV=production
+Environment=VIPS_WARNING=0
+Environment=DEBUG=pageboard:core,pageboard:api
+
+[Install]
+WantedBy=default.target
+
