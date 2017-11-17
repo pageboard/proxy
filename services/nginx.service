@@ -13,12 +13,13 @@
 [Unit]
 Description=A high performance web server and a reverse proxy server
 Documentation=man:nginx(8)
-After=network.target
+After=pageboard.service
 
 [Service]
 Type=forking
+Restart=always
 WorkingDirectory=%h/pageboard/server
-PIDFile=nginx.pid
+PIDFile=%h/pageboard/server/nginx/nginx.pid
 ExecStartPre=/usr/sbin/nginx -t -q -p nginx -c nginx.conf -g 'daemon on; master_process on;'
 ExecStart=/usr/sbin/nginx -p nginx -c nginx.conf -g 'daemon on; master_process on;'
 ExecReload=/usr/sbin/nginx -p nginx -c nginx.conf -g 'daemon on; master_process on;' -s reload
