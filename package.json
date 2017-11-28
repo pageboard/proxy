@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/pageboard/server#readme",
   "dependencies": {
-    "upcache": "^0.6.5"
+    "upcache": "^0.7.0"
   }
 }
