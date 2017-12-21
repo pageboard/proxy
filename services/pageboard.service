@@ -3,8 +3,7 @@ Description=%p %i
 After=postgresql.service
 
 [Service]
-WorkingDirectory=%h/pageboard/pageboard
-ExecStart=%h/pageboard/pageboard/node_modules/.bin/pageboard
+ExecStart=%h/pageboard/pageboard/pageboard
 Restart=always
 Environment=NODE_ENV=production
 Environment=VIPS_WARNING=0
