@@ -57,6 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# postinstall symlinks
+nginx/snippets
+
 # luarocks installed modules
 rocks
 
