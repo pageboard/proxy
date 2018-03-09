@@ -24,7 +24,7 @@
   "homepage": "https://github.com/pageboard/server#readme",
   "dependencies": {
     "postinstall-links": "^0.3.1",
-    "upcache": "^0.9.0"
+    "upcache": "^0.9.3"
   },
   "links": {
     "upcache/nginx/snippets": "nginx/"
