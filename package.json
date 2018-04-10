@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "postinstall-links; make luarocks nginx/mime.types"
+    "postinstall": "postinstall; make luarocks nginx/mime.types"
   },
   "repository": {
     "type": "git",
@@ -23,10 +23,10 @@
   },
   "homepage": "https://github.com/pageboard/server#readme",
   "dependencies": {
-    "postinstall-links": "^0.3.1",
+    "postinstall": "^0.1.0",
     "upcache": "^0.9.3"
   },
-  "links": {
-    "upcache/nginx/snippets": "nginx/"
+  "postinstall": {
+    "upcache/nginx/snippets": "link nginx/"
   }
 }
