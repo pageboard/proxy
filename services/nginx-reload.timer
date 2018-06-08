@@ -1,0 +1,9 @@
+[Unit]
+Description=Reload nginx daily to account for wildcard cert updates
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timer.target
