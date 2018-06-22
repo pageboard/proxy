@@ -1,0 +1,7 @@
+[Unit]
+Description=Restart pageboard service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/systemctl --user restart pageboard.service
+
