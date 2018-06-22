@@ -3,5 +3,5 @@ Description=Reload nginx service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/systemctl --user reload nginx.service
+ExecStart=/bin/systemctl --user reload nginx.service
 
