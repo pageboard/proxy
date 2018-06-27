@@ -127,7 +127,7 @@ window.statusCheck = function() {
 				}).join('\n'));
 			} else {
 
-				display(null, null, 'Redirecting to<br><a href="' + encodeURI(ref) + '">' + document.location.host + ref + '</a>', "");
+				display(null, null, 'Redirecting to<br><a href="' + encodeURI(ref) + '">' + ref + '</a>', "");
 				setTimeout(function() {
 					if (document.location.replace) document.location.replace(ref);
 					else document.location = ref;
