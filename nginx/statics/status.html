@@ -91,8 +91,6 @@ pre {
 <script>
 (function() {
 
-var ref = document.location.toString();
-
 window.statusCheck = function() {
 	if (document.location.protocol == "file:") {
 		console.warn("file protocol, doing nothing");
@@ -126,11 +124,10 @@ window.statusCheck = function() {
 					return '<table>' + str + '</table>';
 				}).join('\n'));
 			} else {
-
-				display(null, null, 'Redirecting to<br><a href="' + encodeURI(ref) + '">' + ref + '</a>', "");
+				var loc = document.location.toString();
+				display(null, null, 'Redirecting to<br><a href="' + encodeURI(loc) + '">' + loc + '</a>', "");
 				setTimeout(function() {
-					if (document.location.replace) document.location.replace(ref);
-					else document.location = ref;
+					document.location.reload();
 				}, 500);
 				return;
 			}
