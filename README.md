@@ -64,6 +64,7 @@ Local testing
 
 - /etc/hosts must have
 127.0.0.1	localhost.localdomain
+::ffff:127.0.0.1 localhost.localdomain
 - local resolver must map all *.localhost.localdomain to 127.0.0.1
 /etc/NetworkManager/dnsmasq.d/localdomain.conf
 address=/localdomain/127.0.0.1
