@@ -2,6 +2,7 @@
 luarocks:
 	luarocks --tree=rocks install lua-resty-auto-ssl 0.12.0
 	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-otf.patch
+	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-allow-domain.patch
 	luarocks --tree=rocks install upcache 0.9.4
 	curl -L https://github.com/openresty/lua-resty-lock/archive/v0.07.tar.gz | \
 		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
