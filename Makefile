@@ -13,6 +13,7 @@ luarocks:
 	curl -L https://github.com/openresty/lua-resty-lrucache/archive/v0.07.tar.gz | \
 		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
 			--wildcards '*/lib/resty/*' --strip-components 2
+	luarocks --tree=rocks install nginx-lua-prometheus
 
 
 nginx/mime.types:
