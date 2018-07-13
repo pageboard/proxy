@@ -2,7 +2,7 @@
 Description=Reload nginx daily to account for wildcard cert updates
 
 [Timer]
-OnCalendar=daily
+OnCalendar=weekly
 Persistent=true
 
 [Install]
