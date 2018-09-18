@@ -1,7 +1,7 @@
 {
-  "name": "@pageboard/server",
+  "name": "@pageboard/proxy",
   "version": "0.1.0",
-  "description": "nginx server configuration",
+  "description": "nginx proxy configuration",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,19 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pageboard/server.git"
+    "url": "git+https://github.com/pageboard/proxy.git"
   },
   "keywords": [
     "pageboard",
-    "server",
+    "proxy",
     "nginx"
   ],
   "author": "Jérémy Lal <kapouer@melix.org>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pageboard/server/issues"
+    "url": "https://github.com/pageboard/proxy/issues"
   },
-  "homepage": "https://github.com/pageboard/server#readme",
+  "homepage": "https://github.com/pageboard/proxy#readme",
   "dependencies": {
     "postinstall": "^0.1.0",
     "upcache": "^0.9.3"
