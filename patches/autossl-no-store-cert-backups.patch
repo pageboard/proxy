@@ -1,0 +1,23 @@
+From 20c41a9221fa2081d71eb91bf430776804499c62 Mon Sep 17 00:00:00 2001
+From: gohai <gottfried.haider@gmail.com>
+Date: Wed, 18 Apr 2018 13:59:52 -0700
+Subject: [PATCH] Don't store cert backups
+
+Those are inconvenient if you don't want to run Redis as LRU cache. We are more interested in not silently discarding any certificates, and scaling Redis with increasing number of domains, so we don't.
+
+If this change is not acceptable, another scheme could be to store the previous (":old") certificate in addition to the current one (":latest"). This way we'd only be storing at most two certificates per domain in Redis, and not a growing number due to renewals.
+---
+--- a/rocks/share/lua/5.1/resty/auto-ssl/storage.lua
++++ b/rocks/share/lua/5.1/resty/auto-ssl/storage.lua
+@@ -56,11 +56,6 @@ function _M.set_cert(self, domain, fullchain_pem, privkey_pem, cert_pem, expiry)
+     return nil, err
+   end
+ 
+-  -- Store the cert with the current timestamp, so the old certs are preserved
+-  -- in case something goes wrong.
+-  local time = ngx.now() * 1000
+-  self.adapter:set(domain .. ":" .. time, string)
+-
+   -- Store the cert under the "latest" alias, which is what this app will use.
+   return self.adapter:set(domain .. ":latest", string)
+ end
