@@ -67,5 +67,6 @@ rocks
 mime.types
 
 # ssl config
-nginx/ssl
-autossl
+/nginx/ssl
+/nginx/enabled
+/autossl

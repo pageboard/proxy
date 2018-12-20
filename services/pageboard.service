@@ -1,13 +1,16 @@
+# This service is actually a systemd target, but we are using a service since
+# targets cannot be reloaded.
+
 [Unit]
-Description=%p %i
-After=postgresql.service
+Description=Control %p
+Requires=%p@fr.service
+Requires=%p@io.service
 
 [Service]
-ExecStart=%h/pageboard/pageboard/pageboard
-Restart=always
-Environment=NODE_ENV=production
-Environment=VIPS_WARNING=0
+Type=oneshot
+ExecStart=/bin/true
+ExecReload=/bin/true
+RemainAfterExit=on
 
 [Install]
 WantedBy=default.target
-

@@ -16,6 +16,7 @@ luarocks:
 		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
 			--wildcards '*/lib/resty/*' --strip-components 2
 	luarocks --tree=rocks install nginx-lua-prometheus
+	cd rocks/share/lua/5.1/ && ln -s ../../../../lua/*
 
 
 nginx/mime.types:

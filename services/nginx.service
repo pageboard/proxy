@@ -18,8 +18,8 @@ After=pageboard.service network.target
 [Service]
 Type=forking
 Restart=always
-WorkingDirectory=%h/pageboard/server
-PIDFile=%h/pageboard/server/nginx/nginx.pid
+WorkingDirectory=%h/pageboard/proxy
+PIDFile=%h/pageboard/proxy/nginx/nginx.pid
 ExecStartPre=/usr/sbin/nginx -t -q -p nginx -c nginx.conf -g 'daemon on; master_process on;'
 ExecStart=/usr/sbin/nginx -p nginx -c nginx.conf -g 'daemon on; master_process on;'
 ExecReload=/usr/sbin/nginx -p nginx -c nginx.conf -g 'daemon on; master_process on;' -s reload
