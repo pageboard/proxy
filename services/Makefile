@@ -10,14 +10,14 @@ restart:
 
 .PHONY: enable
 enable:
-	systemctl --user enable $PWD/pageboard@.service
-	systemctl --user enable $PWD/pageboard.service
-	systemctl --user enable $PWD/pageboard-reload.service
-	systemctl --user enable $PWD/pageboard-reload.timer
-	systemctl --user enable $PWD/memcached.service
-	systemctl --user enable $PWD/nginx.service
-	systemctl --user enable $PWD/nginx-reload.service
-	systemctl --user enable $PWD/nginx-reload.timer
+	systemctl --user enable $(PWD)/pageboard@.service
+	systemctl --user enable $(PWD)/pageboard.service
+	systemctl --user enable $(PWD)/pageboard-reload.service
+	systemctl --user enable $(PWD)/pageboard-reload.timer
+	systemctl --user enable $(PWD)/memcached.service
+	systemctl --user enable $(PWD)/nginx.service
+	systemctl --user enable $(PWD)/nginx-reload.service
+	systemctl --user enable $(PWD)/nginx-reload.timer
 
 .PHONY: disable
 disable: stop
