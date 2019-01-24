@@ -3,8 +3,8 @@
 
 [Unit]
 Description=Control %p
-Requires=%p@fr.service
-Requires=%p@io.service
+# Requires=%p@fr.service
+# Requires=%p@io.service
 
 [Service]
 Type=oneshot
