@@ -5,7 +5,7 @@ ssl:
 	mkdir -p ssl
 
 dhparam:
-	openssl dhparam 2048 -outform pem > ssl/dhparam.pem
+	openssl dhparam 4096 -outform pem > ssl/dhparam.pem
 	chmod 640 ssl/dhparam.pem
 
 fallback:
