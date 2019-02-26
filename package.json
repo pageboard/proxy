@@ -24,7 +24,7 @@
   "homepage": "https://github.com/pageboard/proxy#readme",
   "dependencies": {
     "postinstall": "^0.1.0",
-    "upcache": "^0.9.3"
+    "upcache": "^0.10.0"
   },
   "postinstall": {
     "upcache/nginx/snippets": "link nginx/"
