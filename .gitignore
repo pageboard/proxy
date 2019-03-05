@@ -64,7 +64,9 @@ nginx/snippets
 rocks
 
 # links
-mime.types
+/nginx/mime.types
+/nginx/conf.d/upcache.conf
+/lua/upcache*
 
 # ssl config
 /nginx/ssl
