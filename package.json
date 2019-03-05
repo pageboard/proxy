@@ -23,10 +23,13 @@
   },
   "homepage": "https://github.com/pageboard/proxy#readme",
   "dependencies": {
-    "postinstall": "^0.1.0",
-    "upcache": "^0.10.0"
+    "postinstall": "^0.4.2",
+    "upcache": "^1.0.0"
   },
   "postinstall": {
-    "upcache/nginx/snippets": "link nginx/"
+    "upcache/nginx/snippets/upcache*.conf": "link nginx/snippets/",
+    "upcache/nginx/conf.d/upcache*.conf": "link nginx/conf.d/",
+    "upcache/upcache.lua": "link lua/",
+    "upcache/upcache": "link lua/"
   }
 }
