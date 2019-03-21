@@ -27,8 +27,9 @@
     "upcache": "^1.1.1"
   },
   "postinstall": {
-    "upcache/nginx/snippets/upcache*.conf": "link nginx/snippets/",
-    "upcache/nginx/conf.d/upcache*.conf": "link nginx/conf.d/",
+    "upcache/nginx/server.d/upcache.conf": "link nginx/server.d/",
+    "upcache/nginx/conf.d/upcache.conf": "link nginx/conf.d/",
+    "upcache/nginx/location.d/upcache.conf": "link nginx/location.d/",
     "upcache/upcache.lua": "link lua/",
     "upcache/upcache": "link lua/"
   }
