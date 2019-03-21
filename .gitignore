@@ -65,7 +65,7 @@ rocks
 
 # links
 /nginx/mime.types
-/nginx/conf.d/upcache.conf
+/nginx/*.d/upcache.conf
 /lua/upcache*
 
 # ssl config
