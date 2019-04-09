@@ -1,8 +1,6 @@
 [Unit]
 Description=%p %i
-PartOf=%p.service
-#ReloadPropagatedFrom=%p.service
-Before=%p.service
+ReloadPropagatedFrom=%p.service
 After=postgresql.service
 
 [Service]
