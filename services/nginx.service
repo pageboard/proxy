@@ -13,7 +13,7 @@
 [Unit]
 Description=A high performance web server and a reverse proxy server
 Documentation=man:nginx(8)
-After=pageboard.service network.target
+After=pageboard.service network.target nss-lookup.target
 
 [Service]
 Type=forking
