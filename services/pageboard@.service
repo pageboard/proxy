@@ -6,7 +6,6 @@ After=postgresql.service
 [Service]
 ExecStart=%h/%p/server%i/pageboard
 Restart=always
-Environment=APPNAME=%p%i
 Environment=NODE_ENV=production
 Environment=VIPS_WARNING=0
 
