@@ -107,7 +107,8 @@ window.statusCheck = function() {
 	xhr.open("GET", "/.well-known/pageboard", true);
 	xhr.onreadystatechange = function() {
 		if (this.readyState != 4) return;
-		if (this.status == 200) {
+		var code = this.status;
+		if (code >= 200 && code < 300) {
 			var res;
 			try {
 				res = JSON.parse(this.responseText);
@@ -135,12 +136,12 @@ window.statusCheck = function() {
 				}, 500);
 				return;
 			}
-		} else if (this.status == 404) {
+		} else if (code == 404) {
 			display("Site not found", "Please check the address");
-		} else if (this.status == 0) {
-			display("Request error", "Please contact administrator");
 		} else {
-			if (this.status == 501 || this.status == 502 || this.status == 503) {
+			if (code == 0) {
+				display("Request error", "Please contact administrator");
+			} else if (code == 501 || code == 502 || code == 503) {
 				display("Maintenance", null, "please wait<br>the page will open automatically in a moment");
 			} else {
 				display("Server error", null, "this is unexpected but it might resolve in a moment");
