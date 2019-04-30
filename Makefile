@@ -22,7 +22,6 @@ luapatches:
 	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-allow-domain.patch
 	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-no-store-cert-backups.patch
 	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-delete-expired-certificates.patch
-	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/resty-core-compat.patch
 
 nginx/mime.types:
 	cd nginx && ln -sf /etc/nginx/mime.types .
