@@ -3,7 +3,8 @@ Description=%p %i
 Before=nginx.service
 
 [Service]
-ExecStart=/usr/bin/memcached -I 10m -p 17211 -l 127.0.0.1 -m 2048 -v
+EnvironmentFile=-%h/.config/memcached
+ExecStart=/usr/bin/memcached -p 17211 -l 127.0.0.1 -v $MEMCACHED_OPTS
 Restart=always
 
 [Install]
