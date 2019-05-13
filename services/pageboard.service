@@ -3,9 +3,9 @@
 
 [Unit]
 Description=Control %p
-Requires=%p@0.7.service
-Requires=%p@0.6.service
-Requires=%p@0.5.service
+Wants=%p@0.7.service
+Wants=%p@0.6.service
+Wants=%p@0.5.service
 
 [Service]
 Type=oneshot
