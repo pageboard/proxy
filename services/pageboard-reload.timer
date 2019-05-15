@@ -1,9 +1,0 @@
-[Unit]
-Description=Reload leaking pageboard daily
-
-[Timer]
-OnCalendar=daily
-Persistent=true
-
-[Install]
-WantedBy=timer.target

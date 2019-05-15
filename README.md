@@ -1,8 +1,13 @@
-Pageboard server config
-=======================
+Pageboard nginx proxy
+=====================
 
-This module *requires* manual configuration for now, but provides lots
-of ready-to-run config files.
+- nginx with srcache and upcache
+- memcached
+- xvfb (needed for webkitgtk prerendering)
+
+Some configuration must be manually done (especially for the hosts).
+
+See pageboard/systemd for units files.
 
 Prerequisites
 -------------
@@ -26,7 +31,7 @@ Setup pageboard service
 
 # Setup minimal config
 
-In `~/.config/pageboard1`:
+In `~/.config/pageboard1/config`:
 ```
 listen = 17000
 [connection]
