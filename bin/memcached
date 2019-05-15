@@ -1,5 +1,5 @@
 #!/bin/sh
-if ! command . ~/.config/memcached; then
+if ! command . ~/.config/pageboard/memcached; then
 	echo 'Use it to set MEMCACHED_OPTS="-I ... -m ..."'
 fi
 /usr/bin/memcached -p 17211 -l 127.0.0.1 -v $MEMCACHED_OPTS
