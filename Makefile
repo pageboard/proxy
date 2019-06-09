@@ -1,6 +1,7 @@
 install: luarocks lualn luapatches
 
 luarocks:
+	luarocks --tree=rocks install inifile 1.0
 	luarocks --tree=rocks install lua-resty-http 0.13
 	luarocks --tree=rocks install lua-resty-auto-ssl 0.12.0
 	luarocks --tree=rocks install upcache 1.1.1
@@ -23,6 +24,7 @@ luapatches:
 	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-allow-domain.patch
 	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-no-store-cert-backups.patch
 	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-delete-expired-certificates.patch
+	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/inifile-fix-key-reg.patch
 
 nginx/mime.types:
 	cd nginx && ln -sf /etc/nginx/mime.types .
