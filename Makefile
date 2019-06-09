@@ -1,6 +1,7 @@
 install: luarocks lualn luapatches
 
 luarocks:
+	luarocks --tree=rocks install lua-resty-http 0.13
 	luarocks --tree=rocks install lua-resty-auto-ssl 0.12.0
 	luarocks --tree=rocks install upcache 1.1.1
 	curl -L https://github.com/openresty/lua-resty-lock/archive/v0.08.tar.gz | \
