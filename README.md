@@ -14,8 +14,8 @@ Prerequisites
 
 * /usr/sbin/nginx
 * /etc/nginx/mime.types
-* lua5.1 and lua-filesystem, lua-cjson debian packages
-* nginx modules: ndk, lua, memc, set_misc, srcache_filter all installed
+* lua5.1 and lua-filesystem, lua-cjson, lua-inifile debian packages
+* nginx modules: ndk, lua, memc, set_misc, srcache_filter, lua-upstream all installed
   in usual location (/usr/share/nginx/modules)
   A patched nginx for debian is available at
   https://salsa.debian.org/kapouer/nginx/tree/master-srcache
