@@ -1,185 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Pageboard - Service Unavailable</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style type="text/css">
-body {
-	background-color:#444;
-	font-family:monospace;
-	color:#CCC;
-	text-align:center;
-}
-#content {
-	padding:1em;
-}
-a {
-	color: #88F;
-	text-decoration: unset;
-}
-table {
-	text-align:left;
-	border-spacing:0;
-	border-collapse:collapse;
-	width:100%;
-}
-table td {
-	padding:0.3em 0.6em;
-	border:1px solid #CCC;
-}
-pre {
-	max-height:25%;
-	overflow:auto;
-}
-.preloader {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction:column;
-	width: 100%;
-	height:100%;
-	position: absolute;
-	top:0;
-	left:0;
-}
-.preloader-chasing-squares {
-	width: 50px;
-	height: 50px;
-	font-size:0;
-}
-#message {
-	height:50px;
-}
-
-.preloader-chasing-squares .square {
-	display: inline-block;
-	width: 40%;
-	height: 40%;
-	margin:5%;
-	border-radius:100%;
-	opacity: 0;
-	background: #BBF;
-	box-shadow: 0 0 2px 0 #BBF;
-}
-
-.preloader-chasing-squares .square {
-	animation: focusfade 4s infinite;
-}
-
-.preloader-chasing-squares .square:nth-child(1) {
-	animation-delay: 0s;
-}
-
-.preloader-chasing-squares .square:nth-child(2) {
-	animation-delay: 1s;
-}
-
-.preloader-chasing-squares .square:nth-child(3) {
-	animation-delay: 3s;
-}
-
-.preloader-chasing-squares .square:nth-child(4) {
-	animation-delay: 2s;
-}
-
-@keyframes focusfade {
-	0% {
-		opacity:0;
-	}
-	15% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-	}
-}
-</style>
-<script>
-(function() {
-
-window.statusCheck = function() {
-	if (document.location.protocol == "file:") {
-		console.warn("file protocol, doing nothing");
-		return;
-	}
-	var titleNode = document.getElementById('title');
-	var contentNode = document.getElementById('content');
-	var messageNode = document.getElementById('message');
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "/.well-known/pageboard", true);
-	xhr.onreadystatechange = function() {
-		if (this.readyState != 4) return;
-		var code = this.status;
-		if (code >= 200 && code < 300) {
-			var res;
-			try {
-				res = JSON.parse(this.responseText);
-			} catch(ex) {
-				setTimeout(function() {
-					window.statusCheck();
-				}, 1000);
-				return;
-			}
-			if (res.errors && res.errors.length) {
-				display('Error installing site', res.errors.map(function(line) {
-					if (typeof line == "string") line = {error: line};
-					var str = Object.keys(line).map(function(key) {
-						var val = line[key];
-						if (typeof val != "string") val = JSON.stringify(val);
-						return '<tr><td>' + key + "</td><td><pre>" + val + "</pre></td></tr>";
-					}).join('');
-					return '<table>' + str + '</table>';
-				}).join('\n'));
-			} else {
-				var loc = document.location.toString();
-				display(null, null, 'Redirecting to<br><a href="' + encodeURI(loc) + '">' + loc + '</a>', "");
-				setTimeout(function() {
-					document.location.reload();
-				}, 500);
-				return;
-			}
-		} else if (code == 404) {
-			display("Site not found", "Please check the address");
-		} else {
-			if (code == 0) {
-				display("Request error", "Please contact administrator");
-			} else if (code == 501 || code == 502 || code == 503) {
-				display("Maintenance", null, "please wait<br>the page will open automatically in a moment");
-			} else {
-				display("Server error", null, "this is unexpected but it might resolve in a moment");
-			}
-			setTimeout(function() {
-				window.statusCheck();
-			}, 5000);
-		}
-	};
-	try {
-		xhr.send();
-	} catch(ex) {
-		display("Network error", "Please contact administrator");
-	}
-	function display(title, content, message) {
-		if (title != null) titleNode.innerHTML = title;
-		if (content != null) contentNode.innerHTML = content;
-		if (message != null) messageNode.innerHTML = message;
-	}
-};
-
-})();
-</script>
+	<title>Pageboard - Service Unavailable</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/.well-known/statics/style.css">
+	<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+	<script src="/.well-known/statics/script.js"></script>
 </head>
-<body onload="statusCheck()">
-<h2 id="title"></h2>
-<div id="content">
-<div class='preloader'>
-	<div class='preloader-chasing-squares'>
-		<div class='square'></div>
-		<div class='square'></div>
-		<div class='square'></div>
-		<div class='square'></div>
+<body>
+	<h2 id="title">503 Service Unavailable</h2>
+	<div id="content">
+		<div class="preloader">
+			<div class="animated blue squares">
+				<div class="square"></div>
+				<div class="square"></div>
+				<div class="square"></div>
+				<div class="square"></div>
+			</div>
+			<p id="message">please wait</p>
+		</div>
 	</div>
-	<p id="message">please wait</p>
-</div>
-</div>
 </body>
 </html>

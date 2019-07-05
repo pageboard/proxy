@@ -1,80 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Pageboard - Not Implemented</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style type="text/css">
-body {
-	background-color:#444;
-	font-family:monospace;
-	color:#CCC;
-	text-align:center;
-}
-#content {
-	padding:1em;
-}
-a {
-	color: #88F;
-	text-decoration: unset;
-}
-table {
-	text-align:left;
-	border-spacing:0;
-	border-collapse:collapse;
-	width:100%;
-}
-table td {
-	padding:0.3em 0.6em;
-	border:1px solid #CCC;
-}
-pre {
-	max-height:25%;
-	overflow:auto;
-}
-.preloader {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction:column;
-	width: 100%;
-	height:100%;
-	position: absolute;
-	top:0;
-	left:0;
-}
-.preloader-chasing-squares {
-	width: 50px;
-	height: 50px;
-	font-size:0;
-}
-#message {
-	height:50px;
-}
-
-.preloader-chasing-squares .square {
-	display: inline-block;
-	width: 40%;
-	height: 40%;
-	margin:5%;
-	border-radius:100%;
-	background: #B33;
-	box-shadow: 0 0 5px 0 #B33;
-}
-
-</style>
+	<title>Pageboard - Not Implemented</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/.well-known/statics/style.css">
+	<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 </head>
 <body>
-<h2 id="title">501 Not Implemented</h2>
-<div id="content">
-<div class='preloader'>
-	<div class='preloader-chasing-squares'>
-		<div class='square'></div>
-		<div class='square'></div>
-		<div class='square'></div>
-		<div class='square'></div>
+	<h2 id="title">501 Not Implemented</h2>
+	<div id="content">
+		<div class="preloader">
+			<div class="red squares">
+				<div class="square"></div>
+				<div class="square"></div>
+				<div class="square"></div>
+				<div class="square"></div>
+			</div>
+			<p id="message">you are trying something wrong</p>
+		</div>
 	</div>
-	<p id="message">you are trying something wrong</p>
-</div>
-</div>
 </body>
 </html>

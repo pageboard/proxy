@@ -1,0 +1,104 @@
+body {
+	background-color:#444;
+	font-family:monospace;
+	color:#CCC;
+	text-align:center;
+}
+#content {
+	padding:1em;
+}
+a {
+	color: #88F;
+	text-decoration: unset;
+}
+table {
+	text-align:left;
+	border-spacing:0;
+	border-collapse:collapse;
+	width:100%;
+}
+table td {
+	padding:0.3em 0.6em;
+	border:1px solid #CCC;
+}
+pre {
+	max-height:25%;
+	overflow:auto;
+}
+.preloader {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction:column;
+	width: 100%;
+	height:100%;
+	position: absolute;
+	top:0;
+	left:0;
+}
+.squares {
+	width: 50px;
+	height: 50px;
+	font-size:0;
+}
+#message {
+	height:50px;
+}
+
+.squares .square {
+	display: inline-block;
+	width: 40%;
+	height: 40%;
+	margin:5%;
+	border-radius:100%;
+	background: #333;
+	box-shadow: 0 0 5px 0 #333;
+}
+
+.blue.squares .square {
+	background: #88F;
+	box-shadow: 0 0 5px 0 #88F;
+}
+
+.red.squares .square {
+	background: #B33;
+	box-shadow: 0 0 5px 0 #B33;
+}
+
+.orange.squares .square {
+	background: #F83;
+	box-shadow: 0 0 5px 0 #F83;
+}
+
+.animated.squares .square {
+	opacity:0;
+	animation: focusfade 4s infinite;
+}
+
+.animated.squares .square:nth-child(1) {
+	animation-delay: 0s;
+}
+
+.animated.squares .square:nth-child(2) {
+	animation-delay: 1s;
+}
+
+.animated.squares .square:nth-child(3) {
+	animation-delay: 3s;
+}
+
+.animated.squares .square:nth-child(4) {
+	animation-delay: 2s;
+}
+
+@keyframes focusfade {
+	0% {
+		opacity:0;
+	}
+	15% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
