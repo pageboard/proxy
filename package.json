@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "postinstall; make luarocks nginx/mime.types"
+    "postinstall": "postinstall; make install"
   },
   "repository": {
     "type": "git",
@@ -29,8 +29,6 @@
   "postinstall": {
     "upcache/nginx/server.d/upcache.conf": "link nginx/server.d/",
     "upcache/nginx/conf.d/upcache.conf": "link nginx/conf.d/",
-    "upcache/nginx/location.d/upcache.conf": "link nginx/location.d/",
-    "upcache/upcache.lua": "link lua/",
-    "upcache/upcache": "link lua/"
+    "upcache/nginx/location.d/upcache.conf": "link nginx/location.d/"
   }
 }

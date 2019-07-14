@@ -1,4 +1,7 @@
-install: luarocks lualn luapatches
+install: luarocks luapatches nginx/mime.types lualnclean lualn
+
+lualnclean:
+	rm -f lua/upcache*
 
 luarocks:
 	luarocks --tree=rocks install inifile 1.0
