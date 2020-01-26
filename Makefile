@@ -24,7 +24,6 @@ lualn:
 
 luapatches:
 	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-otf.patch
-	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/inifile-fix-key-reg.patch
 
 nginx/mime.types:
 	cd nginx && ln -sf /etc/nginx/mime.types .
