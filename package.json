@@ -1,6 +1,6 @@
 {
   "name": "@pageboard/proxy",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "nginx proxy configuration",
   "main": "index.js",
   "scripts": {
@@ -23,11 +23,11 @@
   },
   "homepage": "https://github.com/pageboard/proxy#readme",
   "dependencies": {
-    "postinstall": "^0.4.2",
-    "upcache": "^1.1.2"
+    "postinstall": "^0.7.0",
+    "upcache": "^2.0.0"
   },
   "postinstall": {
-    "upcache/nginx/server.d/upcache.conf": "link nginx/server.d/",
+    "upcache/nginx/server.d/upcache-redis.conf": "link nginx/server.d/",
     "upcache/nginx/conf.d/upcache.conf": "link nginx/conf.d/",
     "upcache/nginx/location.d/upcache.conf": "link nginx/location.d/"
   }
