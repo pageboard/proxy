@@ -7,7 +7,7 @@ luarocks:
 	luarocks --tree=rocks install lua-toml 2.0
 	luarocks --tree=rocks install lua-resty-http 0.15
 	luarocks --tree=rocks install lua-resty-auto-ssl 0.13.1
-	luarocks --tree=rocks install upcache 1.2.0
+	luarocks --tree=rocks install upcache 2.1.0
 	curl -L https://github.com/openresty/lua-resty-lock/archive/v0.08.tar.gz | \
 		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
 			--wildcards '*/lib/resty/*' --strip-components 2
