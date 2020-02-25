@@ -17,6 +17,9 @@ luarocks:
 	curl -L https://github.com/openresty/lua-resty-lrucache/archive/v0.09.tar.gz | \
 		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
 			--wildcards '*/lib/resty/*' --strip-components 2
+	curl -L https://github.com/openresty/lua-resty-redis/archive/v0.28rc1.tar.gz | \
+		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
+			--wildcards '*/lib/resty/*' --strip-components 2
 	luarocks --tree=rocks install nginx-lua-prometheus
 
 lualn:
