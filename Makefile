@@ -20,7 +20,7 @@ luarocks:
 	curl -L https://github.com/openresty/lua-resty-redis/archive/v0.28rc1.tar.gz | \
 		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
 			--wildcards '*/lib/resty/*' --strip-components 2
-	luarocks --tree=rocks install nginx-lua-prometheus
+	luarocks --tree=rocks install nginx-lua-prometheus 0.20181120
 
 lualn:
 	cd rocks/share/lua/5.1/ && ln -sf ../../../../lua/* .
