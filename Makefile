@@ -11,13 +11,13 @@ luarocks:
 	curl -L https://github.com/openresty/lua-resty-lock/archive/v0.08.tar.gz | \
 		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
 			--wildcards '*/lib/resty/*' --strip-components 2
-	curl -L https://github.com/openresty/lua-resty-core/archive/v0.1.17.tar.gz | \
+	curl -L https://github.com/openresty/lua-resty-core/archive/v0.1.21.tar.gz | \
 		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
 			--wildcards '*/lib/resty/*' --wildcards '*/lib/ngx/*' --strip-components 2
-	curl -L https://github.com/openresty/lua-resty-lrucache/archive/v0.09.tar.gz | \
+	curl -L https://github.com/openresty/lua-resty-lrucache/archive/v0.10.tar.gz | \
 		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
 			--wildcards '*/lib/resty/*' --strip-components 2
-	curl -L https://github.com/openresty/lua-resty-redis/archive/v0.28rc1.tar.gz | \
+	curl -L https://github.com/openresty/lua-resty-redis/archive/v0.29.tar.gz | \
 		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
 			--wildcards '*/lib/resty/*' --strip-components 2
 	luarocks --tree=rocks install nginx-lua-prometheus 0.20181120
