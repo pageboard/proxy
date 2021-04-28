@@ -1,0 +1,33 @@
+#!/usr/bin/node
+
+const tder = require('tder');
+const { readFileSync, writeFileSync } = require('fs');
+
+const domain = process.argv.pop();
+const domainFile = domain.replace(/\./g, '_');
+
+try {
+
+	const keyPem = readFileSync(`${domainFile}.key`).toString();
+	const crtPem = readFileSync(`${domainFile}.crt`).toString();
+	const caPem = readFileSync("CACert.crt").toString();
+
+	const certObj = tder.interpreter.certInterpreter(tder.parsePem(crtPem));
+	const certValid = Math.round(new Date(certObj.dueTime.notAfter).getTime() / 1000);
+
+	console.log("Validity", certObj.dueTime.notAfter, certValid);
+
+	writeFileSync(`${domain}%3Alatest`, JSON.stringify({
+		expiry: certValid,
+		fullchain_pem: crtPem + "\n" + caPem,
+		privkey_pem: keyPem
+	}));
+
+} catch(err) {
+	console.error(err);
+	console.info("Expected", `${domainFile}.key`, `${domainFile}.crt`, "CACert.crt", "to be present");
+	process.exit(1);
+}
+
+console.log("Success, copy the file into", "pageboard/proxy/autossl/storage/file/")
+
