@@ -3,8 +3,12 @@ function statusCheck() {
 		console.warn("file protocol, doing nothing");
 		return;
 	}
+	var to = setTimeout(function() {
+		statusCheck();
+	}, 5000);
 	var titleNode = document.getElementById('title');
-	if (!titleNode) return setTimeout(statusCheck, 100);
+	var lastStatus = parseInt(titleNode.textContent);
+
 	var contentNode = document.getElementById('content');
 	var messageNode = document.getElementById('message');
 	var xhr = new XMLHttpRequest();
@@ -12,18 +16,16 @@ function statusCheck() {
 	xhr.onreadystatechange = function() {
 		if (this.readyState != 4) return;
 		var code = this.status;
+		if (code === lastStatus) return;
 		if (code >= 200 && code < 300) {
 			var res;
 			try {
 				res = JSON.parse(this.responseText);
 			} catch(ex) {
-				setTimeout(function() {
-					window.statusCheck();
-				}, 1000);
 				return;
 			}
 			if (res.errors && res.errors.length) {
-				display('Error installing site', res.errors.map(function(line) {
+				display(null, 'Error installing site', res.errors.map(function(line) {
 					if (typeof line == "string") line = {error: line};
 					var str = Object.keys(line).map(function(key) {
 						var val = line[key];
@@ -34,36 +36,45 @@ function statusCheck() {
 				}).join('\n'));
 			} else {
 				var loc = document.location.toString();
-				display(null, null, 'Redirecting to<br><a href="' + encodeURI(loc) + '">' + loc + '</a>', "");
+				display(code, "Reloading...", false, 'Redirecting to<br><a href="' + encodeURI(loc) + '">' + loc + '</a>', "");
+				clearTimeout(to);
 				setTimeout(function() {
 					document.location.reload();
 				}, 500);
 				return;
 			}
+		} else if (code == 400) {
+			display(code, "Bad request", false, "Please check the address");
 		} else if (code == 404) {
-			display("Site not found", "Please check the address");
+			display(code, "Site not found", false, "Please check the address");
 		} else {
 			if (code == 0) {
-				display("Request error", null, "Either you lost internet access or the server is temporarily down");
+				display(code, "Request error", true, "Server is unreachable");
 			} else if (code == 501 || code == 502 || code == 503) {
-				display("Maintenance", null, "please wait<br>the page will open automatically in a moment");
+				display(code, " Maintenance", true, "please wait<br>the page will open automatically in a moment");
 			} else {
-				display("Server error", "this incident has been reported");
+				display(code, "error", false, "unknown error - please report this incident");
 			}
-			setTimeout(function() {
-				statusCheck();
-			}, 5000);
 		}
 	};
 	try {
 		xhr.send();
 	} catch(ex) {
-		display("Network error", "Please contact administrator");
+		display(0, "Network error", "Please contact administrator");
 	}
-	function display(title, content, message) {
-		if (title != null) titleNode.innerHTML = title;
-		if (content != null) contentNode.innerHTML = content;
+	function display(code, title, content, message) {
+		if (title != null) titleNode.innerHTML = (code ? code + ' ' : '') + title;
+		if (content === false) {
+			contentNode.firstElementChild.hidden = true;
+		} else if (content === true) {
+			contentNode.firstElementChild.hidden = false;
+		} else if (content != null) {
+			contentNode.innerHTML = content;
+		}
 		if (message != null) messageNode.innerHTML = message;
 	}
 }
-statusCheck();
+
+if (document.readyState === 'complete') statusCheck();
+else window.onload = statusCheck;
+
