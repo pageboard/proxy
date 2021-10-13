@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/pageboard/proxy#readme",
   "dependencies": {
-    "postinstall": "^0.7.0",
-    "upcache": "^2.1.1"
+    "postinstall": "^0.7.3",
+    "upcache": "^2.2.1"
   },
   "postinstall": {
     "upcache/nginx/server.d/upcache-redis.conf": "link nginx/server.d/",
