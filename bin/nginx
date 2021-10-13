@@ -1,3 +1,9 @@
 #!/bin/sh
 baseDir=$(dirname $(readlink -f "$0"))
-cd $baseDir/.. && /usr/sbin/nginx -p nginx -c nginx.conf -g "daemon off;"
+
+cliConf="daemon off;"
+if [ '--debug' = "$1" ]; then
+	cliConf="${cliConf} master_process off;"
+fi
+
+cd $baseDir/.. && /usr/sbin/nginx -p nginx -c nginx.conf -g "${cliConf}"
