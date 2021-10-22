@@ -3,7 +3,6 @@ Pageboard nginx proxy
 
 - nginx with srcache and upcache
 - memcached
-- xvfb (needed for webkitgtk prerendering)
 
 Some configuration must be manually done (especially for the hosts).
 
