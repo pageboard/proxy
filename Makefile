@@ -26,7 +26,7 @@ luarocks:
 	luarocks --tree=rocks install nginx-lua-prometheus 0.20181120
 
 lualn:
-	cd rocks/lib/lua/5.1/ && ln -sf ../../../../lua/* .
+	cd rocks/lib/lua/5.1/ && cp -sf ../../../../lua/* .
 
 luapatches:
 	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-otf.patch
