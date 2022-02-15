@@ -10,7 +10,6 @@ luarocks:
 	luarocks --tree=rocks install lua-resty-auto-ssl 0.13.1
 	luarocks --tree=rocks install luafilesystem 1.8.0
 	luarocks --tree=rocks install lua-cjson 2.1.0.6
-	ln -sf rocks/lib/lua/5.1/*.so
 	curl -L https://github.com/openresty/lua-resty-lock/archive/v0.08.tar.gz | \
 		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
 			--wildcards '*/lib/resty/*' --strip-components 2
@@ -26,7 +25,7 @@ luarocks:
 	luarocks --tree=rocks install nginx-lua-prometheus 0.20181120
 
 lualn:
-	cd rocks/lib/lua/5.1/ && cp -sf ../../../../lua/* .
+	cd rocks/share/lua/5.1/ && cp -sf ../../../../lua/* .
 
 luapatches:
 	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-otf.patch
