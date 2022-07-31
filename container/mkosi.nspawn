@@ -1,0 +1,8 @@
+[Exec]
+ResolvConf=copy-host
+PrivateUsers=off
+
+[Files]
+Overlay=/var/lib/machines/bookworm:/var/lib/machines/pageboard-proxy:/
+PrivateUsersOwnership=off
+

@@ -1,0 +1,41 @@
+[Output]
+Output=/var/lib/machines/pageboard-proxy
+Format=directory
+
+[Partitions]
+BaseImage=/var/lib/machines/bookworm
+
+[Content]
+CleanPackageMetadata=true
+BuildSources=..
+
+# build proxy deps
+BuildPackages=
+ luarocks
+ make
+ patch
+ gcc
+ npm
+
+# runtime
+# keep redis-server on the host
+Packages=
+ systemd-container
+ ca-certificates
+ curl
+ certbot
+ lua-cjson
+ lua-filesystem
+ libluajit2-5.1-2
+ libnginx-mod-http-lua
+ libnginx-mod-http-lua-upstream
+ libnginx-mod-http-memc
+ libnginx-mod-http-set-misc
+ libnginx-mod-http-headers-more-filter
+ libnginx-mod-http-brotli-filter
+ libnginx-mod-http-ndk
+ libnginx-mod-http-srcache-filter
+ nginx
+
+# proxy needs access to luarocks/github
+WithNetwork=true

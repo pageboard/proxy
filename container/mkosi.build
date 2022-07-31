@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cp $SRCDIR/* $DESTDIR/
+
+cd $DESTDIR
+npm install --production

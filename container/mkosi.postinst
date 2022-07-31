@@ -1,0 +1,16 @@
+#!/bin/sh
+
+appHome=/var/lib/pageboard
+appDir="${appHome}/proxy"
+
+adduser --system --group --home $appHome pageboard
+mv $DESTDIR $appDir
+
+chown -R pageboard:pageboard $appDir/autossl $appDir/nginx/temp
+
+systemctl disable nginx.service
+systemctl link ./services/pageboard-proxy.service
+systemctl link ./services/pageboard-proxy-reload.service
+systemctl link ./services/pageboard-proxy-reload.timer
+systemctl enable pageboard-proxy.service
+systemctl enable pageboard-proxy-reload.timer
