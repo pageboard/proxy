@@ -1,21 +1,10 @@
 local module = {}
-local lfs = require "lfs"
 local ssl = require "ngx.ssl"
 
 module._VERSION = "0.1"
 
 function module.init(root)
-	local wildcards = {}
-	for dir in lfs.dir(root) do
-		if dir ~= "." and dir ~= ".." then
-			local pems = readPems(root .. dir)
-			if pems ~= nil then
-				wildcards[dir] = pems
-				ngx.log(ngx.WARN, "Wildcard certificate "..dir)
-			end
-		end
-	end
-	return wildcards
+	return readPems(root)
 end
 
 function readPems(dir)
