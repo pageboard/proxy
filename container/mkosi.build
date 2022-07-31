@@ -1,6 +1,11 @@
 #!/bin/sh
+set -x
+set -e
 
-cp $SRCDIR/* $DESTDIR/
+appDir="${DESTDIR}/var/lib/pageboard"
 
-cd $DESTDIR
+mkdir -p $appDir
+cp -ar $SRCDIR $appDir/proxy
+
+cd $appDir/proxy
 npm install --production
