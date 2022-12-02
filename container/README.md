@@ -3,17 +3,16 @@
 ## build
 
 First make sure /var/lib/machines/bookworm is available:
-```
+
+```shell
 sudo mkosi --distribution=debian --release=bookworm
 ```
 
-
 Then build the overlay image:
 
-```
+```shell
 sudo mkosi
 ```
-
 
 ## install
 
@@ -26,11 +25,8 @@ and copy
 to the target host
  /etc/systemd/nspawn/
 
-
 ## certificate
 
 Certificates are handled by autossl, but the root domain wildcard certificate needs more work.
 
-For now, manually put the privkey.pem/fullchain.pem files into /var/lib/pageboard/proxy/nginx/ssl/cert/
-
-
+For now, manually put the privkey.pem/fullchain.pem files into /var/lib/pageboard/proxy/nginx/ssl/cert/pageboard/
