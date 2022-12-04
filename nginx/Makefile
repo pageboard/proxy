@@ -5,7 +5,7 @@ ssl:
 	mkdir -p ssl
 
 dhparam: ssl/dhparam.pem
-	openssl -dsaparam dhparam 4096 -outform pem > ssl/dhparam.pem
+	openssl dhparam -outform pem -dsaparam 4096 > ssl/dhparam.pem
 	chmod 640 ssl/dhparam.pem
 
 fallback: ssl/resty-auto-ssl-fallback.crt
