@@ -19,7 +19,6 @@ luarocks:
 	curl -L https://github.com/openresty/lua-resty-redis/archive/v0.29.tar.gz | \
 		tar -C ./rocks/share/lua/5.1/ -x -v -z -f - \
 			--wildcards '*/lib/resty/*' --strip-components 2
-	luarocks --tree=rocks install nginx-lua-prometheus 0.20220127
 	echo "Run apt install lua-filesystem"
 	echo "Run apt install lua-cjson"
 
