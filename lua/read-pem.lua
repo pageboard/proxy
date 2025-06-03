@@ -14,19 +14,20 @@ function readPems(dir)
 		ngx.log(ngx.ERR, err)
 		return
 	else
-		pem.key = ssl.priv_key_pem_to_der(file:read("*a"))
+		local keyPem = file:read("*a")
 		file:close()
 		file = nil
+		pem.key = ssl.priv_key_pem_to_der(keyPem)
 	end
-	local fullDer
 	file, err = io.open(dir .. "/fullchain.pem", "r")
 	if err then
 		ngx.log(ngx.ERR, err)
 		return
 	else
-		pem.full = ssl.cert_pem_to_der(file:read("*a"))
+		local certPem = file:read("*a")
 		file:close()
 		file = nil
+		pem.full = ssl.cert_pem_to_der(certPem)
 	end
 	return pem
 end
