@@ -1,13 +1,15 @@
+LUAROCKS = luarocks-5.1
+
 install: luarocks luapatches nginx/mime.types nginx/temp nginx/logs lualnclean lualn
 
 lualnclean:
 	rm -f lua/upcache*
 
 luarocks:
-	luarocks --tree=rocks install upcache 2.7.0
-	luarocks --tree=rocks install lua-toml 2.0
-	luarocks --tree=rocks install lua-resty-http 0.17.1 # 0.17.2 is noisy with mTLS
-	luarocks --tree=rocks install lua-resty-auto-ssl 0.13.1
+	$(LUAROCKS) --tree=rocks install upcache 2.7.0
+	$(LUAROCKS) --tree=rocks install lua-toml 2.0
+	$(LUAROCKS) --tree=rocks install lua-resty-http 0.17.1 # 0.17.2 is noisy with mTLS
+	$(LUAROCKS) --tree=rocks install lua-resty-auto-ssl 0.13.1
 	#luarocks --tree=rocks install luafilesystem 1.8.0
 	#luarocks --tree=rocks install lua-cjson 2.1.0.6
 	curl -L https://github.com/openresty/lua-resty-lock/archive/v0.09.tar.gz | \
