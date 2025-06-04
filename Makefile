@@ -6,7 +6,7 @@ lualnclean:
 luarocks:
 	luarocks --tree=rocks install upcache 2.7.0
 	luarocks --tree=rocks install lua-toml 2.0
-	luarocks --tree=rocks install lua-resty-http 0.17.2
+	luarocks --tree=rocks install lua-resty-http 0.17.1 # 0.17.2 is noisy with mTLS
 	luarocks --tree=rocks install lua-resty-auto-ssl 0.13.1
 	#luarocks --tree=rocks install luafilesystem 1.8.0
 	#luarocks --tree=rocks install lua-cjson 2.1.0.6
