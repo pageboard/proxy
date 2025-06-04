@@ -23,7 +23,8 @@ luarocks:
 	echo "Run apt install lua-cjson"
 
 lualn:
-	cd rocks/share/lua/5.1/ && cp -sf ../../../../lua/* .
+	rm -f rocks/share/lua/5.1/lib
+	cd rocks/share/lua/5.1/ && ln -s ../../../../lib
 
 luapatches:
 	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-otf.patch
