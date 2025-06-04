@@ -27,7 +27,9 @@ lualn:
 	cd rocks/share/lua/5.1/ && ln -s ../../../../lib
 
 luapatches:
-	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-otf.patch
+	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-delete-expired-certificates.patch
+	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-drop-ocsp.patch
+	-patch --backup --forward --strip 1 --quiet --reject-file - < patches/autossl-no-store-cert-backups.patch
 
 nginx/mime.types:
 	cd nginx && ln -sf /etc/nginx/mime.types .

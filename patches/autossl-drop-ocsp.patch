@@ -1,16 +1,16 @@
---- rocks/share/lua/5.1/resty/auto-ssl/ssl_certificate.lua.orig	2025-06-04 11:42:21.923718582 +0200
-+++ rocks/share/lua/5.1/resty/auto-ssl/ssl_certificate.lua	2025-06-04 11:43:31.258743600 +0200
+--- a/rocks/share/lua/5.1/resty/auto-ssl/ssl_certificate.lua	2025-06-04 11:42:21.923718582 +0200
++++ b/rocks/share/lua/5.1/resty/auto-ssl/ssl_certificate.lua	2025-06-04 11:43:31.258743600 +0200
 @@ -1,6 +1,5 @@
  local http = require "resty.http"
  local lock = require "resty.lock"
 -local ocsp = require "ngx.ocsp"
  local ssl = require "ngx.ssl"
  local ssl_provider = require "resty.auto-ssl.ssl_providers.lets_encrypt"
- 
+
 @@ -156,94 +155,6 @@
    return nil, "failed to get or issue certificate"
  end
- 
+
 -local function get_ocsp_response(fullchain_der, auto_ssl_instance)
 -  -- Pull the OCSP URL to hit out of the certificate chain.
 -  local ocsp_url, ocsp_responder_err = ocsp.get_ocsp_responder_from_der_chain(fullchain_der)
@@ -101,11 +101,11 @@
 -
  local function set_response_cert(auto_ssl_instance, domain, cert_der)
    local ok, err
- 
+
 @@ -254,12 +165,6 @@
      return nil, "failed to clear existing (fallback) certificates - " .. (err or "")
    end
- 
+
 -  -- Set OCSP stapling.
 -  ok, err = set_ocsp_stapling(domain, cert_der, auto_ssl_instance)
 -  if not ok then
